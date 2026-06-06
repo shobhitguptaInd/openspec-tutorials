@@ -182,11 +182,11 @@ export default function Samples() {
                   
                   <div className="flex gap-3">
                     <a
-                      href={`https://github.com/shobhitguptaInd/openspec-tutorials/tree/main/${
+                      href={`https://github.com/shobhitguptaInd/openspec-tutorials/tree/main/openspec-tutorials/${
                         category.category === 'COBOL/JCL'
-                          ? 'openspec-tutorials/cobol-jcl'
-                          : `${category.category.toLowerCase().replace(/\s+/g, '-')}/${project.name.toLowerCase().replace(/\s+/g, '-')}`
-                      }`}
+                          ? 'cobol-jcl'
+                          : category.category.toLowerCase().replace(/\s+/g, '-')
+                      }/${project.name.toLowerCase().replace(/\s+/g, '-')}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex-1 bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition text-sm text-center"
