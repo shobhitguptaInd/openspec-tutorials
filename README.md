@@ -19,8 +19,8 @@ A comprehensive tutorial platform for learning OpenSpec and IBM Bob, focused on 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/openspec/tutorial-website.git
-cd tutorial-website
+git clone https://github.com/shobhitguptaInd/openspec-tutorials.git
+cd openspec-tutorials/tutorial-website
 ```
 
 2. Install dependencies:
@@ -226,13 +226,14 @@ MIT License - see LICENSE file for details
 
 - [OpenSpec Documentation](https://docs.openspec.dev)
 - [GitHub Repository](https://github.com/openspec/openspec)
+- [Tutorial Repository](https://github.com/shobhitguptaInd/openspec-tutorials)
 - [Community Discord](https://discord.gg/openspec)
 
 ## 💡 Support
 
 - 📧 Email: support@openspec.dev
 - 💬 Discord: [Join our community](https://discord.gg/openspec)
-- 🐛 Issues: [GitHub Issues](https://github.com/openspec/tutorial-website/issues)
+- 🐛 Issues: [GitHub Issues](https://github.com/shobhitguptaInd/openspec-tutorials/issues)
 
 ---
 

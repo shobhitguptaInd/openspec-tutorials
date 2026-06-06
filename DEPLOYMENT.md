@@ -27,7 +27,7 @@ Vercel is the **recommended and most cost-effective** hosting solution for this 
    git init
    git add .
    git commit -m "Initial commit"
-   git remote add origin https://github.com/yourusername/openspec-tutorials.git
+   git remote add origin https://github.com/shobhitguptaInd/openspec-tutorials.git
    git push -u origin main
    ```
 

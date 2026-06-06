@@ -30,7 +30,7 @@ Open [http://localhost:3000](http://localhost:3000) to see your site.
    git init
    git add .
    git commit -m "Initial commit"
-   git remote add origin https://github.com/YOUR-USERNAME/openspec-tutorials.git
+   git remote add origin https://github.com/shobhitguptaInd/openspec-tutorials.git
    git push -u origin main
    ```
 

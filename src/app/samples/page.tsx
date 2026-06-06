@@ -6,7 +6,7 @@ export default function Samples() {
   const [copiedProject, setCopiedProject] = useState<string | null>(null)
 
   const handleClone = (projectName: string) => {
-    const repoUrl = `git clone https://github.com/openspec/openspec-tutorials.git`
+    const repoUrl = `git clone https://github.com/shobhitguptaInd/openspec-tutorials.git`
     navigator.clipboard.writeText(repoUrl)
     setCopiedProject(projectName)
     setTimeout(() => setCopiedProject(null), 2000)
@@ -141,7 +141,7 @@ export default function Samples() {
             Clone the entire sample repository to get all examples:
           </p>
           <div className="bg-gray-900 text-gray-100 p-4 rounded-lg font-mono text-sm">
-            git clone https://github.com/openspec/openspec-tutorials.git
+            git clone https://github.com/shobhitguptaInd/openspec-tutorials.git
           </div>
           <p className="mt-4 text-sm opacity-90">
             Or browse individual projects below and clone specific examples
@@ -182,7 +182,7 @@ export default function Samples() {
                   
                   <div className="flex gap-3">
                     <a
-                      href={`https://github.com/openspec/openspec-tutorials/tree/main/${category.category.toLowerCase().replace(/\s+/g, '-')}/${project.name.toLowerCase().replace(/\s+/g, '-')}`}
+                      href={`https://github.com/shobhitguptaInd/openspec-tutorials/tree/main/${category.category.toLowerCase().replace(/\s+/g, '-')}/${project.name.toLowerCase().replace(/\s+/g, '-')}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex-1 bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition text-sm text-center"
@@ -270,7 +270,7 @@ export default function Samples() {
             Have a great OpenSpec example to share? We welcome community contributions! 
             Submit your sample project to help other developers learn.
           </p>
-          <a href="https://github.com/openspec/openspec-tutorials/blob/main/CONTRIBUTING.md" 
+          <a href="https://github.com/shobhitguptaInd/openspec-tutorials/blob/main/CONTRIBUTING.md"
              className="text-primary-600 hover:text-primary-700 font-medium">
             Learn how to contribute →
           </a>
