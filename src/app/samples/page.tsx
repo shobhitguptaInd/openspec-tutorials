@@ -1,4 +1,17 @@
+'use client'
+
+import { useState } from 'react'
+
 export default function Samples() {
+  const [copiedProject, setCopiedProject] = useState<string | null>(null)
+
+  const handleClone = (projectName: string) => {
+    const repoUrl = `git clone https://github.com/openspec/openspec-tutorials.git`
+    navigator.clipboard.writeText(repoUrl)
+    setCopiedProject(projectName)
+    setTimeout(() => setCopiedProject(null), 2000)
+  }
+
   const samples = [
     {
       category: 'COBOL/JCL',
@@ -168,11 +181,19 @@ export default function Samples() {
                   </div>
                   
                   <div className="flex gap-3">
-                    <button className="flex-1 bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition text-sm">
+                    <a
+                      href={`https://github.com/openspec/openspec-tutorials/tree/main/${category.category.toLowerCase().replace(/\s+/g, '-')}/${project.name.toLowerCase().replace(/\s+/g, '-')}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-700 transition text-sm text-center"
+                    >
                       View Project
-                    </button>
-                    <button className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-200 transition text-sm">
-                      Clone
+                    </a>
+                    <button
+                      onClick={() => handleClone(project.name)}
+                      className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-200 transition text-sm relative"
+                    >
+                      {copiedProject === project.name ? '✓ Copied!' : 'Clone'}
                     </button>
                   </div>
                 </div>
