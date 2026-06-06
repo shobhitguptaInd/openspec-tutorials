@@ -1,0 +1,48 @@
+name: azure-cloud-integration
+version: 1.0.0
+description: Application deployed to Azure with full cloud services
+language: csharp
+framework: aspnet-core
+
+metadata:
+  difficulty: advanced
+  estimated_time: 5-6 hours
+  topics:
+    - Azure
+    - App Service
+    - Blob Storage
+    - Key Vault
+    - Application Insights
+    - Azure SQL
+
+structure:
+  src:
+    - Controllers/
+    - Services/
+    - Models/
+    - Azure/
+  docs:
+    - proposal.md
+    - README.md
+    - DEPLOYMENT.md
+
+dependencies:
+  - dotnet: ">=8.0"
+  - azure-sdk: ">=1.0"
+  - azure-storage: ">=12.0"
+
+build:
+  restore: dotnet restore
+  build: dotnet build
+  run: dotnet run
+  deploy: az webapp deploy
+
+learning_objectives:
+  - Deploy to Azure App Service
+  - Use Azure Blob Storage
+  - Integrate Azure Key Vault
+  - Implement Application Insights
+  - Connect to Azure SQL
+  - Manage cloud resources
+
+# Made with Bob

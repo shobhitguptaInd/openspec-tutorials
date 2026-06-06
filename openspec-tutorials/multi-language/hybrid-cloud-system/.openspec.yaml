@@ -1,0 +1,53 @@
+name: hybrid-cloud-system
+version: 1.0.0
+description: On-premise .NET with cloud-based Java services
+language: multi
+frameworks:
+  - dotnet
+  - java
+
+metadata:
+  difficulty: advanced
+  estimated_time: 8-10 hours
+  topics:
+    - .NET
+    - Java
+    - Cloud
+    - Hybrid Architecture
+    - Azure
+    - AWS
+    - Integration
+
+structure:
+  dotnet:
+    - on-premise-service/
+  java:
+    - cloud-service/
+  infrastructure:
+    - terraform/
+    - docker/
+  docs:
+    - proposal.md
+    - README.md
+    - ARCHITECTURE.md
+
+dependencies:
+  - dotnet: ">=8.0"
+  - java: ">=17"
+  - docker: ">=20.0"
+  - terraform: ">=1.0"
+
+build:
+  dotnet: dotnet build on-premise-service
+  java: cd cloud-service && mvn clean install
+  infrastructure: terraform init && terraform plan
+
+learning_objectives:
+  - Design hybrid cloud architecture
+  - Integrate on-premise and cloud services
+  - Implement secure communication
+  - Deploy to multiple clouds
+  - Manage hybrid infrastructure
+  - Handle data synchronization
+
+# Made with Bob

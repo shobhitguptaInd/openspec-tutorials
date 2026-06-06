@@ -1,0 +1,81 @@
+name: aspnet-core-web-api
+version: 1.0.0
+description: ASP.NET Core Web API with JWT authentication and Entity Framework Core
+language: csharp
+framework: aspnet-core
+
+metadata:
+  difficulty: beginner
+  estimated_time: 2-3 hours
+  topics:
+    - ASP.NET Core
+    - Entity Framework Core
+    - JWT Authentication
+    - REST API
+    - SQL Server
+    - SQLite
+    - Swagger
+
+structure:
+  src:
+    - Program.cs
+    - Controllers/AuthController.cs
+    - Controllers/ProductsController.cs
+    - Models/Product.cs
+    - Models/User.cs
+    - Models/Category.cs
+    - DTOs/LoginRequest.cs
+    - DTOs/RegisterRequest.cs
+    - DTOs/ProductRequest.cs
+    - DTOs/ProductResponse.cs
+    - Data/ApplicationDbContext.cs
+    - Services/IAuthService.cs
+    - Services/AuthService.cs
+    - Services/IProductService.cs
+    - Services/ProductService.cs
+    - Middleware/ErrorHandlingMiddleware.cs
+  docs:
+    - proposal.md
+    - README.md
+  build:
+    - ProductCatalog.csproj
+    - appsettings.json
+
+dependencies:
+  - dotnet: ">=8.0"
+  - entity-framework-core: "8.0.0"
+  - jwt-bearer: "8.0.0"
+
+build:
+  restore: dotnet restore
+  build: dotnet build
+  run: dotnet run
+  test: dotnet test
+
+endpoints:
+  - POST /api/auth/register
+  - POST /api/auth/login
+  - GET /api/products
+  - GET /api/products/{id}
+  - GET /api/products/category/{category}
+  - POST /api/products
+  - PUT /api/products/{id}
+  - DELETE /api/products/{id}
+
+validation:
+  - Check API endpoints
+  - Verify JWT authentication
+  - Test CRUD operations
+  - Validate error handling
+  - Check Swagger documentation
+
+learning_objectives:
+  - Build RESTful APIs with ASP.NET Core
+  - Implement JWT authentication
+  - Use Entity Framework Core
+  - Apply input validation
+  - Handle exceptions globally
+  - Document APIs with Swagger
+  - Write unit and integration tests
+
+# Made with Bob

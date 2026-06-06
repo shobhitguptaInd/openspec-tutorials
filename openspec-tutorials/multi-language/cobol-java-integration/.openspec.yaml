@@ -1,0 +1,47 @@
+name: cobol-java-integration
+version: 1.0.0
+description: Mainframe COBOL calling Java microservices
+language: multi
+frameworks:
+  - cobol
+  - java
+
+metadata:
+  difficulty: advanced
+  estimated_time: 6-8 hours
+  topics:
+    - COBOL
+    - Java
+    - REST API
+    - Integration
+    - Mainframe
+    - Microservices
+    - HTTP Client
+
+structure:
+  cobol:
+    - src/MAINPROG.cbl
+    - src/HTTPCALL.cbl
+  java:
+    - customer-service/
+  docs:
+    - proposal.md
+    - README.md
+
+dependencies:
+  - gnucobol: ">=3.0"
+  - java: ">=17"
+  - spring-boot: "3.2.0"
+
+build:
+  cobol: cobc -x -o mainprog src/MAINPROG.cbl
+  java: cd customer-service && mvn clean install
+
+learning_objectives:
+  - Integrate COBOL with Java services
+  - Make HTTP calls from COBOL
+  - Handle JSON in COBOL
+  - Build REST APIs in Java
+  - Bridge legacy and modern systems
+
+# Made with Bob

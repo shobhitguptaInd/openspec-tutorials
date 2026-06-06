@@ -1,0 +1,51 @@
+name: clean-architecture-template
+version: 1.0.0
+description: Enterprise application following clean architecture principles
+language: csharp
+framework: aspnet-core
+
+metadata:
+  difficulty: intermediate
+  estimated_time: 4-5 hours
+  topics:
+    - Clean Architecture
+    - CQRS
+    - MediatR
+    - Domain-Driven Design
+    - Dependency Injection
+    - Unit of Work
+
+structure:
+  src:
+    - Domain/
+    - Application/
+    - Infrastructure/
+    - WebAPI/
+  tests:
+    - Domain.Tests/
+    - Application.Tests/
+    - Infrastructure.Tests/
+  docs:
+    - proposal.md
+    - README.md
+
+dependencies:
+  - dotnet: ">=8.0"
+  - mediatr: ">=12.0"
+  - automapper: ">=12.0"
+
+build:
+  restore: dotnet restore
+  build: dotnet build
+  run: dotnet run --project src/WebAPI
+  test: dotnet test
+
+learning_objectives:
+  - Understand clean architecture
+  - Implement CQRS pattern
+  - Use MediatR for commands/queries
+  - Apply DDD principles
+  - Structure enterprise applications
+  - Write testable code
+
+# Made with Bob

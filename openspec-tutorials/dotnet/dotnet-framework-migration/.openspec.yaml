@@ -1,0 +1,44 @@
+name: dotnet-framework-migration
+version: 1.0.0
+description: Migrating legacy .NET Framework app to .NET 8
+language: csharp
+framework: dotnet
+
+metadata:
+  difficulty: advanced
+  estimated_time: 6-8 hours
+  topics:
+    - Migration
+    - .NET 8
+    - .NET Framework
+    - Modernization
+    - Refactoring
+    - Compatibility
+
+structure:
+  legacy:
+    - LegacyApp/
+  modern:
+    - ModernApp/
+  docs:
+    - proposal.md
+    - README.md
+    - MIGRATION-GUIDE.md
+
+dependencies:
+  - dotnet-framework: "4.8"
+  - dotnet: ">=8.0"
+
+build:
+  legacy: msbuild LegacyApp.sln
+  modern: dotnet build ModernApp.sln
+
+learning_objectives:
+  - Analyze legacy .NET Framework code
+  - Plan migration strategy
+  - Migrate to .NET 8
+  - Handle breaking changes
+  - Modernize code patterns
+  - Test migrated application
+
+# Made with Bob

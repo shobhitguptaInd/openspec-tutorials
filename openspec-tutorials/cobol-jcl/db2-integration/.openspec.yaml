@@ -1,0 +1,53 @@
+name: db2-integration
+version: 1.0.0
+description: COBOL program with embedded SQL and DB2 database operations
+language: cobol
+framework: db2
+
+metadata:
+  difficulty: advanced
+  estimated_time: 4-5 hours
+  topics:
+    - COBOL
+    - DB2
+    - SQL
+    - Embedded SQL
+    - Transaction Management
+    - Cursor Operations
+
+structure:
+  src:
+    - DB2PROG.sqb
+  docs:
+    - proposal.md
+    - README.md
+
+dependencies:
+  - ibm-cobol: ">=5.0"
+  - db2: ">=9.7"
+  - db2-precompiler: ">=9.7"
+
+build:
+  precompile: db2 prep src/DB2PROG.sqb bindfile
+  compile: cobc -x -o db2prog src/DB2PROG.cbl
+  bind: db2 bind DB2PROG.bnd
+
+run:
+  command: ./db2prog
+  database: SAMPLE
+
+validation:
+  - Check DB2 connection
+  - Verify CRUD operations
+  - Test transaction management
+  - Validate error handling
+
+learning_objectives:
+  - Understand embedded SQL in COBOL
+  - Master DB2 connection management
+  - Implement CRUD operations
+  - Handle transactions properly
+  - Use cursors effectively
+  - Manage SQL errors
+
+# Made with Bob

@@ -1,0 +1,51 @@
+name: legacy-modernization
+version: 1.0.0
+description: Guide to documenting and refactoring legacy COBOL code
+language: cobol
+framework: gnucobol
+
+metadata:
+  difficulty: advanced
+  estimated_time: 5-6 hours
+  topics:
+    - COBOL
+    - Refactoring
+    - Legacy Code
+    - Documentation
+    - Best Practices
+    - Code Quality
+
+structure:
+  src:
+    - LEGACY.cbl
+    - MODERN.cbl
+  docs:
+    - proposal.md
+    - README.md
+
+dependencies:
+  - gnucobol: ">=3.0"
+
+build:
+  legacy: cobc -x -o legacy src/LEGACY.cbl
+  modern: cobc -x -o modern src/MODERN.cbl
+
+run:
+  legacy: ./legacy
+  modern: ./modern
+
+validation:
+  - Compare legacy and modern outputs
+  - Verify identical business logic
+  - Check code quality improvements
+  - Validate error handling
+
+learning_objectives:
+  - Analyze legacy COBOL code
+  - Identify code smells and anti-patterns
+  - Apply refactoring techniques
+  - Improve code maintainability
+  - Document legacy systems
+  - Follow modern COBOL best practices
+
+# Made with Bob

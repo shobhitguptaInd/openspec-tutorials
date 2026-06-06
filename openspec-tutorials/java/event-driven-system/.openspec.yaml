@@ -1,0 +1,45 @@
+name: event-driven-system
+version: 1.0.0
+description: Kafka-based event processing with multiple consumers
+language: java
+framework: spring-kafka
+
+metadata:
+  difficulty: advanced
+  estimated_time: 5-6 hours
+  topics:
+    - Kafka
+    - Event Sourcing
+    - CQRS
+    - Spring Boot
+    - Event-Driven Architecture
+    - Message Processing
+
+structure:
+  services:
+    - producer-service/
+    - consumer-service/
+    - event-store/
+  docs:
+    - proposal.md
+    - README.md
+
+dependencies:
+  - java: ">=17"
+  - maven: ">=3.6"
+  - spring-boot: "3.2.0"
+  - kafka: ">=3.0"
+
+build:
+  command: mvn clean install
+  run: docker-compose up
+
+learning_objectives:
+  - Understand event-driven architecture
+  - Implement Kafka producers and consumers
+  - Apply event sourcing patterns
+  - Implement CQRS
+  - Handle message processing
+  - Manage event schemas
+
+# Made with Bob

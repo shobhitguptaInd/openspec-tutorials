@@ -1,0 +1,86 @@
+name: spring-boot-rest-api
+version: 1.0.0
+description: Complete Spring Boot REST API with CRUD operations and validation
+language: java
+framework: spring-boot
+
+metadata:
+  difficulty: beginner
+  estimated_time: 2-3 hours
+  topics:
+    - Spring Boot
+    - REST API
+    - JPA
+    - Hibernate
+    - Bean Validation
+    - Swagger/OpenAPI
+    - H2 Database
+
+structure:
+  src:
+    main:
+      java:
+        - TaskApiApplication.java
+        - controller/TaskController.java
+        - service/TaskService.java
+        - service/TaskServiceImpl.java
+        - repository/TaskRepository.java
+        - model/Task.java
+        - model/Priority.java
+        - model/Status.java
+        - dto/TaskRequest.java
+        - dto/TaskResponse.java
+        - dto/ErrorResponse.java
+        - mapper/TaskMapper.java
+        - exception/TaskNotFoundException.java
+        - exception/GlobalExceptionHandler.java
+        - config/OpenApiConfig.java
+      resources:
+        - application.yml
+        - data.sql
+    test:
+      java:
+        - controller/TaskControllerTest.java
+        - service/TaskServiceTest.java
+  docs:
+    - proposal.md
+    - README.md
+  build:
+    - pom.xml
+
+dependencies:
+  - java: ">=17"
+  - maven: ">=3.6"
+  - spring-boot: "3.2.0"
+
+build:
+  command: mvn clean install
+  test: mvn test
+  run: mvn spring-boot:run
+
+endpoints:
+  - POST /api/tasks
+  - GET /api/tasks
+  - GET /api/tasks/{id}
+  - GET /api/tasks/status/{status}
+  - PUT /api/tasks/{id}
+  - PATCH /api/tasks/{id}/status
+  - DELETE /api/tasks/{id}
+
+validation:
+  - Check API endpoints
+  - Verify CRUD operations
+  - Test validation rules
+  - Check error handling
+  - Validate Swagger documentation
+
+learning_objectives:
+  - Build RESTful APIs with Spring Boot
+  - Implement CRUD operations
+  - Use JPA/Hibernate for persistence
+  - Apply Bean Validation
+  - Handle exceptions globally
+  - Document APIs with Swagger
+  - Write unit and integration tests
+
+# Made with Bob

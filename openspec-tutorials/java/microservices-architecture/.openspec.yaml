@@ -1,0 +1,48 @@
+name: microservices-architecture
+version: 1.0.0
+description: Multi-service application with Spring Cloud and service discovery
+language: java
+framework: spring-cloud
+
+metadata:
+  difficulty: intermediate
+  estimated_time: 4-5 hours
+  topics:
+    - Microservices
+    - Spring Cloud
+    - Eureka
+    - API Gateway
+    - Service Discovery
+    - Load Balancing
+    - Circuit Breaker
+
+structure:
+  services:
+    - eureka-server/
+    - api-gateway/
+    - user-service/
+    - order-service/
+    - product-service/
+  docs:
+    - proposal.md
+    - README.md
+
+dependencies:
+  - java: ">=17"
+  - maven: ">=3.6"
+  - spring-boot: "3.2.0"
+  - spring-cloud: "2023.0.0"
+
+build:
+  command: mvn clean install
+  run: docker-compose up
+
+learning_objectives:
+  - Understand microservices architecture
+  - Implement service discovery with Eureka
+  - Build API Gateway
+  - Handle inter-service communication
+  - Implement circuit breakers
+  - Deploy with Docker Compose
+
+# Made with Bob

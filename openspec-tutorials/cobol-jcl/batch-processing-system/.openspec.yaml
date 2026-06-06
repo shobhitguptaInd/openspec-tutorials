@@ -1,0 +1,56 @@
+name: batch-processing-system
+version: 1.0.0
+description: COBOL batch processing system with error handling and reporting
+language: cobol
+framework: gnucobol
+
+metadata:
+  difficulty: intermediate
+  estimated_time: 3-4 hours
+  topics:
+    - COBOL
+    - JCL
+    - Batch Processing
+    - Error Handling
+    - File I/O
+    - Report Generation
+
+structure:
+  src:
+    - BATCHPROC.cbl
+  data:
+    - TRANS.DAT
+  docs:
+    - proposal.md
+    - README.md
+
+dependencies:
+  - gnucobol: ">=3.0"
+
+build:
+  command: cobc -x -o batch-processor src/BATCHPROC.cbl
+  output: batch-processor
+
+run:
+  command: ./batch-processor
+  input_files:
+    - TRANS.DAT
+  output_files:
+    - PROCESSED.DAT
+    - ERRORS.LOG
+    - REPORT.TXT
+
+validation:
+  - Check input file exists
+  - Verify output files created
+  - Validate report statistics
+  - Check error logging
+
+learning_objectives:
+  - Understand batch processing architecture
+  - Implement file I/O in COBOL
+  - Handle errors gracefully
+  - Generate processing reports
+  - Follow mainframe best practices
+
+# Made with Bob

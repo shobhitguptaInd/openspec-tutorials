@@ -1,0 +1,246 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. DB2PROG.
+       AUTHOR. OpenSpec Community.
+      *****************************************************************
+      * DB2 INTEGRATION PROGRAM                                       *
+      * Demonstrates embedded SQL in COBOL with DB2 operations       *
+      *****************************************************************
+       
+       ENVIRONMENT DIVISION.
+       CONFIGURATION SECTION.
+       SOURCE-COMPUTER. IBM-370.
+       OBJECT-COMPUTER. IBM-370.
+       
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       
+      * SQL Communication Area
+           EXEC SQL INCLUDE SQLCA END-EXEC.
+       
+      * Host Variables for Employee Table
+       01  HV-EMPLOYEE.
+           05  HV-EMP-ID           PIC 9(6).
+           05  HV-EMP-NAME         PIC X(50).
+           05  HV-EMP-DEPT         PIC X(20).
+           05  HV-EMP-SALARY       PIC 9(7)V99.
+           05  HV-EMP-HIRE-DATE    PIC X(10).
+       
+      * Cursor Variables
+       01  HV-CURSOR-EMP-ID        PIC 9(6).
+       01  HV-CURSOR-EMP-NAME      PIC X(50).
+       01  HV-CURSOR-SALARY        PIC 9(7)V99.
+       
+      * Control Variables
+       01  WS-SQLCODE              PIC S9(9) COMP.
+       01  WS-RECORD-COUNT         PIC 9(5) VALUE ZERO.
+       01  WS-TOTAL-SALARY         PIC 9(11)V99 VALUE ZERO.
+       01  WS-AVG-SALARY           PIC 9(7)V99.
+       
+      * Display Variables
+       01  WS-FORMATTED-SALARY     PIC Z,ZZZ,ZZ9.99.
+       01  WS-ERROR-MESSAGE        PIC X(80).
+       
+      * Flags
+       01  WS-EOF-FLAG             PIC X VALUE 'N'.
+           88  END-OF-CURSOR       VALUE 'Y'.
+       
+       PROCEDURE DIVISION.
+       MAIN-PROCEDURE.
+           DISPLAY "DB2 Integration Program Starting..."
+           
+           PERFORM 100-CONNECT-DB2
+           PERFORM 200-CREATE-SAMPLE-DATA
+           PERFORM 300-QUERY-EMPLOYEES
+           PERFORM 400-UPDATE-SALARIES
+           PERFORM 500-DELETE-EMPLOYEE
+           PERFORM 600-DISCONNECT-DB2
+           
+           DISPLAY "Program completed successfully"
+           STOP RUN.
+       
+       100-CONNECT-DB2.
+           DISPLAY "Connecting to DB2..."
+           
+           EXEC SQL
+               CONNECT TO SAMPLE
+           END-EXEC
+           
+           MOVE SQLCODE TO WS-SQLCODE
+           IF WS-SQLCODE NOT = 0
+               DISPLAY "ERROR: Failed to connect to DB2"
+               DISPLAY "SQLCODE: " WS-SQLCODE
+               STOP RUN
+           END-IF
+           
+           DISPLAY "Connected to DB2 successfully".
+       
+       200-CREATE-SAMPLE-DATA.
+           DISPLAY "Creating sample employee records..."
+           
+      * Insert Employee 1
+           MOVE 100001 TO HV-EMP-ID
+           MOVE "John Smith" TO HV-EMP-NAME
+           MOVE "Engineering" TO HV-EMP-DEPT
+           MOVE 75000.00 TO HV-EMP-SALARY
+           MOVE "2020-01-15" TO HV-EMP-HIRE-DATE
+           
+           EXEC SQL
+               INSERT INTO EMPLOYEE
+               (EMP_ID, EMP_NAME, EMP_DEPT, EMP_SALARY, HIRE_DATE)
+               VALUES
+               (:HV-EMP-ID, :HV-EMP-NAME, :HV-EMP-DEPT, 
+                :HV-EMP-SALARY, :HV-EMP-HIRE-DATE)
+           END-EXEC
+           
+           PERFORM 900-CHECK-SQLCODE
+           
+      * Insert Employee 2
+           MOVE 100002 TO HV-EMP-ID
+           MOVE "Jane Doe" TO HV-EMP-NAME
+           MOVE "Marketing" TO HV-EMP-DEPT
+           MOVE 68000.00 TO HV-EMP-SALARY
+           MOVE "2021-03-20" TO HV-EMP-HIRE-DATE
+           
+           EXEC SQL
+               INSERT INTO EMPLOYEE
+               (EMP_ID, EMP_NAME, EMP_DEPT, EMP_SALARY, HIRE_DATE)
+               VALUES
+               (:HV-EMP-ID, :HV-EMP-NAME, :HV-EMP-DEPT, 
+                :HV-EMP-SALARY, :HV-EMP-HIRE-DATE)
+           END-EXEC
+           
+           PERFORM 900-CHECK-SQLCODE
+           
+      * Insert Employee 3
+           MOVE 100003 TO HV-EMP-ID
+           MOVE "Bob Johnson" TO HV-EMP-NAME
+           MOVE "Engineering" TO HV-EMP-DEPT
+           MOVE 82000.00 TO HV-EMP-SALARY
+           MOVE "2019-06-10" TO HV-EMP-HIRE-DATE
+           
+           EXEC SQL
+               INSERT INTO EMPLOYEE
+               (EMP_ID, EMP_NAME, EMP_DEPT, EMP_SALARY, HIRE_DATE)
+               VALUES
+               (:HV-EMP-ID, :HV-EMP-NAME, :HV-EMP-DEPT, 
+                :HV-EMP-SALARY, :HV-EMP-HIRE-DATE)
+           END-EXEC
+           
+           PERFORM 900-CHECK-SQLCODE
+           
+           EXEC SQL COMMIT END-EXEC
+           DISPLAY "Sample data created successfully".
+       
+       300-QUERY-EMPLOYEES.
+           DISPLAY " "
+           DISPLAY "Querying all employees..."
+           DISPLAY "ID      Name                    Salary"
+           DISPLAY "------  ----------------------  -----------"
+           
+           EXEC SQL
+               DECLARE EMP_CURSOR CURSOR FOR
+               SELECT EMP_ID, EMP_NAME, EMP_SALARY
+               FROM EMPLOYEE
+               ORDER BY EMP_ID
+           END-EXEC
+           
+           EXEC SQL
+               OPEN EMP_CURSOR
+           END-EXEC
+           
+           PERFORM 900-CHECK-SQLCODE
+           
+           MOVE 'N' TO WS-EOF-FLAG
+           PERFORM UNTIL END-OF-CURSOR
+               EXEC SQL
+                   FETCH EMP_CURSOR
+                   INTO :HV-CURSOR-EMP-ID,
+                        :HV-CURSOR-EMP-NAME,
+                        :HV-CURSOR-SALARY
+               END-EXEC
+               
+               MOVE SQLCODE TO WS-SQLCODE
+               IF WS-SQLCODE = 0
+                   ADD 1 TO WS-RECORD-COUNT
+                   ADD HV-CURSOR-SALARY TO WS-TOTAL-SALARY
+                   MOVE HV-CURSOR-SALARY TO WS-FORMATTED-SALARY
+                   DISPLAY HV-CURSOR-EMP-ID "  " 
+                           HV-CURSOR-EMP-NAME "  $"
+                           WS-FORMATTED-SALARY
+               ELSE IF WS-SQLCODE = 100
+                   SET END-OF-CURSOR TO TRUE
+               ELSE
+                   DISPLAY "ERROR: Fetch failed"
+                   DISPLAY "SQLCODE: " WS-SQLCODE
+                   SET END-OF-CURSOR TO TRUE
+               END-IF
+           END-PERFORM
+           
+           EXEC SQL
+               CLOSE EMP_CURSOR
+           END-EXEC
+           
+           COMPUTE WS-AVG-SALARY = WS-TOTAL-SALARY / WS-RECORD-COUNT
+           MOVE WS-AVG-SALARY TO WS-FORMATTED-SALARY
+           DISPLAY " "
+           DISPLAY "Total Employees: " WS-RECORD-COUNT
+           DISPLAY "Average Salary: $" WS-FORMATTED-SALARY.
+       
+       400-UPDATE-SALARIES.
+           DISPLAY " "
+           DISPLAY "Updating salaries (5% increase for Engineering)..."
+           
+           EXEC SQL
+               UPDATE EMPLOYEE
+               SET EMP_SALARY = EMP_SALARY * 1.05
+               WHERE EMP_DEPT = 'Engineering'
+           END-EXEC
+           
+           PERFORM 900-CHECK-SQLCODE
+           
+           EXEC SQL COMMIT END-EXEC
+           DISPLAY "Salaries updated successfully".
+       
+       500-DELETE-EMPLOYEE.
+           DISPLAY " "
+           DISPLAY "Deleting employee 100002..."
+           
+           MOVE 100002 TO HV-EMP-ID
+           
+           EXEC SQL
+               DELETE FROM EMPLOYEE
+               WHERE EMP_ID = :HV-EMP-ID
+           END-EXEC
+           
+           PERFORM 900-CHECK-SQLCODE
+           
+           EXEC SQL COMMIT END-EXEC
+           DISPLAY "Employee deleted successfully".
+       
+       600-DISCONNECT-DB2.
+           DISPLAY " "
+           DISPLAY "Disconnecting from DB2..."
+           
+           EXEC SQL
+               CONNECT RESET
+           END-EXEC
+           
+           MOVE SQLCODE TO WS-SQLCODE
+           IF WS-SQLCODE = 0
+               DISPLAY "Disconnected successfully"
+           ELSE
+               DISPLAY "WARNING: Disconnect returned SQLCODE: " 
+                       WS-SQLCODE
+           END-IF.
+       
+       900-CHECK-SQLCODE.
+           MOVE SQLCODE TO WS-SQLCODE
+           IF WS-SQLCODE NOT = 0
+               DISPLAY "ERROR: SQL operation failed"
+               DISPLAY "SQLCODE: " WS-SQLCODE
+               DISPLAY "SQLERRM: " SQLERRMC
+               EXEC SQL ROLLBACK END-EXEC
+               STOP RUN
+           END-IF.
+       
+       END PROGRAM DB2PROG.
