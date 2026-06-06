@@ -397,7 +397,7 @@ Table: users
               <div>
                 <h4 className="font-semibold text-gray-900 mb-2">Quality Gates</h4>
                 <ul className="space-y-1 text-gray-700">
-                  <li>☑ Test coverage > 80%</li>
+                  <li>☑ Test coverage {'>'} 80%</li>
                   <li>☑ No critical security issues</li>
                   <li>☑ Performance requirements met</li>
                   <li>☑ Documentation complete</li>

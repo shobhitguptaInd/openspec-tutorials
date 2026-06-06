@@ -90,13 +90,13 @@ export default function QuickReferencePage() {
                 <div>
                   <div className="text-sm text-gray-600 mb-1">Create new specification</div>
                   <div className="bg-gray-900 text-gray-100 p-3 rounded font-mono text-sm">
-                    openspec create <name>
+                    openspec create {'<name>'}
                   </div>
                 </div>
                 <div>
                   <div className="text-sm text-gray-600 mb-1">Use template</div>
                   <div className="bg-gray-900 text-gray-100 p-3 rounded font-mono text-sm">
-                    openspec create <name> --template java-service
+                    openspec create {'<name>'} --template java-service
                   </div>
                 </div>
                 <div>
@@ -120,7 +120,7 @@ export default function QuickReferencePage() {
                 <div>
                   <div className="text-sm text-gray-600 mb-1">Show specification details</div>
                   <div className="bg-gray-900 text-gray-100 p-3 rounded font-mono text-sm">
-                    openspec show <name>
+                    openspec show {'<name>'}
                   </div>
                 </div>
                 <div>
@@ -216,7 +216,7 @@ export default function QuickReferencePage() {
                 <div>
                   <div className="text-sm text-gray-600 mb-1">Track specific requirement</div>
                   <div className="bg-gray-900 text-gray-100 p-3 rounded font-mono text-sm">
-                    openspec history <requirement-id>
+                    openspec history {'<requirement-id>'}
                   </div>
                 </div>
               </div>
