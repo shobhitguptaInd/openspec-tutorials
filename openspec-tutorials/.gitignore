@@ -1,0 +1,90 @@
+# Compiled files
+*.class
+*.exe
+*.o
+*.obj
+*.dll
+*.so
+*.dylib
+
+# Build directories
+target/
+build/
+bin/
+obj/
+out/
+dist/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Language-specific
+# Java
+*.jar
+*.war
+*.ear
+.mvn/
+mvnw
+mvnw.cmd
+
+# .NET
+*.user
+*.suo
+*.cache
+*.log
+packages/
+.vs/
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# COBOL
+*.lst
+*.idy
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Environment files
+.env
+.env.local
+*.local
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Test coverage
+coverage/
+*.coverage
+htmlcov/
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Made with Bob

@@ -1,0 +1,28 @@
+version: 1.0
+
+project:
+  name: hello-openspec-cobol
+  description: Basic COBOL program demonstrating file I/O with OpenSpec specifications
+  language: cobol
+  difficulty: beginner
+  
+specs:
+  - path: proposal.md
+    type: proposal
+    
+structure:
+  src: Source code files
+  tests: Test files and scripts
+  exercises: Practice exercises with solutions
+  
+metadata:
+  topics:
+    - COBOL
+    - File I/O
+    - Basic Specs
+  estimated_time: 30-45 minutes
+  prerequisites:
+    - GnuCOBOL 3.x or higher
+    - Basic understanding of file systems
+
+# Made with Bob
