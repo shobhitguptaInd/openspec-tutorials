@@ -344,7 +344,7 @@ Response: 201 Created
         <section className="mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Next Steps</h2>
           <div className="grid md:grid-cols-2 gap-6">
-            <a href="/samples/java" className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-primary-500 transition">
+            <a href="/samples" className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-primary-500 transition">
               <h3 className="text-xl font-semibold text-gray-900 mb-2">📦 Sample Projects</h3>
               <p className="text-gray-600">Clone complete Java examples</p>
             </a>

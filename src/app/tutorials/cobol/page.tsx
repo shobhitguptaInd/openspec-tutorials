@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function CobolTutorial() {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -278,7 +280,7 @@ Create COBOL program CUSTRPT1 that:
         <section className="mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Next Steps</h2>
           <div className="grid md:grid-cols-2 gap-6">
-            <a href="/samples/cobol" className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-primary-500 transition">
+            <a href="/samples" className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-primary-500 transition">
               <h3 className="text-xl font-semibold text-gray-900 mb-2">📦 Sample Projects</h3>
               <p className="text-gray-600">Clone complete COBOL examples</p>
             </a>
