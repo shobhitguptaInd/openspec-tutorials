@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { links } from '@/config/links'
 
 export default function GettingStarted() {
   return (
@@ -220,8 +221,8 @@ export default function GettingStarted() {
             </p>
             <div className="text-6xl mb-4">📋 → 🏗️ → ⚙️ → 💻 → 👥 → 🧪 → 🚀</div>
             <p className="text-gray-600 mb-6">Requirements → HLD → LLD → Dev → Review → Test → Deploy</p>
-            <a href="/getting-started/sdlc-phases" className="inline-block bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition">
-              View Detailed SDLC Guide →
+            <a href={links.internal.sdlcPhases.url} className="inline-block bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition">
+              {links.internal.sdlcPhases.label} →
             </a>
           </div>
         </section>
@@ -542,21 +543,21 @@ customer data and comply with security requirements.
         <section className="mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-6">Explore More</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <a href="/tutorials/cobol" className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-primary-500 transition">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">COBOL/JCL</h3>
-              <p className="text-gray-600">Mainframe development with OpenSpec</p>
+            <a href={links.internal.tutorialsCobol.url} className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-primary-500 transition">
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">{links.internal.tutorialsCobol.label}</h3>
+              <p className="text-gray-600">{links.internal.tutorialsCobol.description}</p>
             </a>
-            <a href="/tutorials/java" className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-primary-500 transition">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Java</h3>
-              <p className="text-gray-600">Spring Boot microservices</p>
+            <a href={links.internal.tutorialsJava.url} className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-primary-500 transition">
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">{links.internal.tutorialsJava.label}</h3>
+              <p className="text-gray-600">{links.internal.tutorialsJava.description}</p>
             </a>
-            <a href="/tutorials/dotnet" className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-primary-500 transition">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">.NET</h3>
-              <p className="text-gray-600">ASP.NET Core applications</p>
+            <a href={links.internal.tutorialsDotnet.url} className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-primary-500 transition">
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">{links.internal.tutorialsDotnet.label}</h3>
+              <p className="text-gray-600">{links.internal.tutorialsDotnet.description}</p>
             </a>
-            <a href="/samples" className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-primary-500 transition">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Sample Projects</h3>
-              <p className="text-gray-600">Complete working examples</p>
+            <a href={links.internal.samples.url} className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-primary-500 transition">
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">{links.internal.samples.label}</h3>
+              <p className="text-gray-600">{links.internal.samples.description}</p>
             </a>
           </div>
         </section>
@@ -570,18 +571,18 @@ customer data and comply with security requirements.
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">Documentation</h3>
                 <ul className="space-y-3">
                   <li>
-                    <a href="https://docs.openspec.dev" className="text-primary-600 hover:text-primary-700 font-medium">
-                      📖 Official Documentation
+                    <a href={links.external.documentation.url} className="text-primary-600 hover:text-primary-700 font-medium">
+                      📖 {links.external.documentation.label}
                     </a>
                   </li>
                   <li>
-                    <a href="https://github.com/openspec/openspec" className="text-primary-600 hover:text-primary-700 font-medium">
-                      💻 GitHub Repository
+                    <a href={links.external.github.url} className="text-primary-600 hover:text-primary-700 font-medium">
+                      💻 {links.external.github.label}
                     </a>
                   </li>
                   <li>
-                    <a href="/playground" className="text-primary-600 hover:text-primary-700 font-medium">
-                      🎮 Interactive Playground
+                    <a href={links.internal.playground.url} className="text-primary-600 hover:text-primary-700 font-medium">
+                      🎮 {links.internal.playground.label}
                     </a>
                   </li>
                 </ul>
@@ -590,18 +591,18 @@ customer data and comply with security requirements.
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">Community</h3>
                 <ul className="space-y-3">
                   <li>
-                    <a href="https://discord.gg/openspec" className="text-primary-600 hover:text-primary-700 font-medium">
-                      💬 Discord Community
+                    <a href={links.external.discord.url} className="text-primary-600 hover:text-primary-700 font-medium">
+                      💬 {links.external.discord.label}
                     </a>
                   </li>
                   <li>
-                    <a href="https://training.openspec.dev" className="text-primary-600 hover:text-primary-700 font-medium">
-                      🎓 Training & Certification
+                    <a href={links.external.training.url} className="text-primary-600 hover:text-primary-700 font-medium">
+                      🎓 {links.external.training.label}
                     </a>
                   </li>
                   <li>
-                    <a href="mailto:support@openspec.dev" className="text-primary-600 hover:text-primary-700 font-medium">
-                      📧 Enterprise Support
+                    <a href={links.external.support.url} className="text-primary-600 hover:text-primary-700 font-medium">
+                      📧 {links.external.support.label}
                     </a>
                   </li>
                 </ul>

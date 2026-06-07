@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { links } from '@/config/links';
 
 export default function SDLCPhasesPage() {
   useEffect(() => {
@@ -30,7 +31,7 @@ export default function SDLCPhasesPage() {
       {/* Header */}
       <div className="mb-12">
         <nav className="text-sm mb-4">
-          <a href="/getting-started" className="text-primary-600 hover:text-primary-700">← Back to Getting Started</a>
+          <a href={links.internal.gettingStarted.url} className="text-primary-600 hover:text-primary-700">← Back to Getting Started</a>
         </nav>
         <h1 className="text-5xl font-bold text-gray-900 mb-4">OpenSpec Across the SDLC</h1>
         <p className="text-xl text-gray-600">

@@ -1,12 +1,13 @@
 'use client'
 
 import { useState } from 'react'
+import { links } from '@/config/links'
 
 export default function Samples() {
   const [copiedProject, setCopiedProject] = useState<string | null>(null)
 
   const handleClone = (projectName: string) => {
-    const repoUrl = `git clone https://github.com/shobhitguptaInd/openspec-tutorials.git`
+    const repoUrl = `git clone ${links.external.githubTutorials.url.replace('https://github.com/', 'https://github.com/')}`
     navigator.clipboard.writeText(repoUrl)
     setCopiedProject(projectName)
     setTimeout(() => setCopiedProject(null), 2000)

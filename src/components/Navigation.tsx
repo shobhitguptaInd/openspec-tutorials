@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
+import { links } from '@/config/links'
 
 export default function Navigation() {
   const pathname = usePathname()
@@ -19,7 +20,7 @@ export default function Navigation() {
           <div className="flex">
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center">
-              <Link href="/" className="flex items-center">
+              <Link href={links.internal.home.url} className="flex items-center">
                 <span className="text-2xl font-bold text-primary-600">OpenSpec</span>
                 <span className="ml-2 text-gray-500">Tutorials</span>
               </Link>
@@ -29,14 +30,14 @@ export default function Navigation() {
             <div className="hidden md:ml-8 md:flex md:space-x-1">
               {/* Home */}
               <Link
-                href="/"
+                href={links.internal.home.url}
                 className={`${
                   pathname === '/' 
                     ? 'border-primary-500 text-gray-900' 
                     : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
                 } inline-flex items-center px-3 pt-1 border-b-2 text-sm font-medium transition`}
               >
-                Home
+                {links.internal.home.label}
               </Link>
 
               {/* Getting Started Dropdown */}
@@ -55,26 +56,26 @@ export default function Navigation() {
                 </button>
                 {gettingStartedOpen && (
                   <div className="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg border border-gray-200 py-2">
-                    <Link href="/getting-started" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                    <Link href={links.internal.gettingStarted.url} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
                       Overview
                     </Link>
-                    <Link href="/getting-started/quick-reference" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                      Quick Reference
+                    <Link href={links.internal.quickReference.url} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                      {links.internal.quickReference.label}
                     </Link>
-                    <Link href="/getting-started/sdlc-phases" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                      SDLC Phases
+                    <Link href={links.internal.sdlcPhases.url} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                      {links.internal.sdlcPhases.label}
                     </Link>
-                    <Link href="/getting-started/enterprise-features" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                      Enterprise Features
+                    <Link href={links.internal.enterpriseFeatures.url} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                      {links.internal.enterpriseFeatures.label}
                     </Link>
-                    <Link href="/getting-started/integrations" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                      Integrations
+                    <Link href={links.internal.integrations.url} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                      {links.internal.integrations.label}
                     </Link>
-                    <Link href="/getting-started/use-cases" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                      Use Cases
+                    <Link href={links.internal.useCases.url} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                      {links.internal.useCases.label}
                     </Link>
-                    <Link href="/getting-started/roi" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                      ROI Calculator
+                    <Link href={links.internal.roi.url} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                      {links.internal.roi.label}
                     </Link>
                   </div>
                 )}
@@ -96,14 +97,14 @@ export default function Navigation() {
                 </button>
                 {tutorialsOpen && (
                   <div className="absolute left-0 mt-2 w-56 bg-white rounded-md shadow-lg border border-gray-200 py-2">
-                    <Link href="/tutorials/cobol" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                      🏢 COBOL / JCL
+                    <Link href={links.internal.tutorialsCobol.url} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                      🏢 {links.internal.tutorialsCobol.label}
                     </Link>
-                    <Link href="/tutorials/java" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                      ☕ Java
+                    <Link href={links.internal.tutorialsJava.url} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                      ☕ {links.internal.tutorialsJava.label}
                     </Link>
-                    <Link href="/tutorials/dotnet" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                      🔷 .NET
+                    <Link href={links.internal.tutorialsDotnet.url} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                      🔷 {links.internal.tutorialsDotnet.label}
                     </Link>
                   </div>
                 )}
@@ -111,7 +112,7 @@ export default function Navigation() {
 
               {/* Playground */}
               <Link
-                href="/playground"
+                href={links.internal.playground.url}
                 className={`${
                   isActive('/playground')
                     ? 'border-primary-500 text-gray-900'
@@ -119,31 +120,31 @@ export default function Navigation() {
                 } inline-flex items-center px-3 pt-1 border-b-2 text-sm font-medium transition`}
               >
                 <span className="mr-1">🚀</span>
-                Interactive Playground
+                {links.internal.playground.label}
               </Link>
 
               {/* Samples */}
               <Link
-                href="/samples"
+                href={links.internal.samples.url}
                 className={`${
                   isActive('/samples')
                     ? 'border-primary-500 text-gray-900'
                     : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
                 } inline-flex items-center px-3 pt-1 border-b-2 text-sm font-medium transition`}
               >
-                Sample Projects
+                {links.internal.samples.label}
               </Link>
 
               {/* Sitemap */}
               <Link
-                href="/sitemap"
+                href={links.internal.sitemap.url}
                 className={`${
                   isActive('/sitemap')
                     ? 'border-primary-500 text-gray-900'
                     : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
                 } inline-flex items-center px-3 pt-1 border-b-2 text-sm font-medium transition`}
               >
-                Sitemap
+                {links.internal.sitemap.label}
               </Link>
             </div>
           </div>
@@ -170,49 +171,49 @@ export default function Navigation() {
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-gray-200">
           <div className="pt-2 pb-3 space-y-1">
-            <Link href="/" className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300">
-              Home
+            <Link href={links.internal.home.url} className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300">
+              {links.internal.home.label}
             </Link>
             <div className="pl-3 pr-4 py-2 text-sm font-semibold text-gray-900">Getting Started</div>
-            <Link href="/getting-started" className="block pl-6 pr-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
+            <Link href={links.internal.gettingStarted.url} className="block pl-6 pr-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
               Overview
             </Link>
-            <Link href="/getting-started/quick-reference" className="block pl-6 pr-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
-              Quick Reference
+            <Link href={links.internal.quickReference.url} className="block pl-6 pr-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
+              {links.internal.quickReference.label}
             </Link>
-            <Link href="/getting-started/sdlc-phases" className="block pl-6 pr-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
-              SDLC Phases
+            <Link href={links.internal.sdlcPhases.url} className="block pl-6 pr-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
+              {links.internal.sdlcPhases.label}
             </Link>
-            <Link href="/getting-started/enterprise-features" className="block pl-6 pr-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
-              Enterprise Features
+            <Link href={links.internal.enterpriseFeatures.url} className="block pl-6 pr-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
+              {links.internal.enterpriseFeatures.label}
             </Link>
-            <Link href="/getting-started/integrations" className="block pl-6 pr-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
-              Integrations
+            <Link href={links.internal.integrations.url} className="block pl-6 pr-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
+              {links.internal.integrations.label}
             </Link>
-            <Link href="/getting-started/use-cases" className="block pl-6 pr-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
-              Use Cases
+            <Link href={links.internal.useCases.url} className="block pl-6 pr-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
+              {links.internal.useCases.label}
             </Link>
-            <Link href="/getting-started/roi" className="block pl-6 pr-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
-              ROI Calculator
+            <Link href={links.internal.roi.url} className="block pl-6 pr-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
+              {links.internal.roi.label}
             </Link>
             <div className="pl-3 pr-4 py-2 text-sm font-semibold text-gray-900">Tutorials</div>
-            <Link href="/tutorials/cobol" className="block pl-6 pr-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
-              🏢 COBOL / JCL
+            <Link href={links.internal.tutorialsCobol.url} className="block pl-6 pr-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
+              🏢 {links.internal.tutorialsCobol.label}
             </Link>
-            <Link href="/tutorials/java" className="block pl-6 pr-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
-              ☕ Java
+            <Link href={links.internal.tutorialsJava.url} className="block pl-6 pr-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
+              ☕ {links.internal.tutorialsJava.label}
             </Link>
-            <Link href="/tutorials/dotnet" className="block pl-6 pr-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
-              🔷 .NET
+            <Link href={links.internal.tutorialsDotnet.url} className="block pl-6 pr-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
+              🔷 {links.internal.tutorialsDotnet.label}
             </Link>
-            <Link href="/playground" className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300">
-              🚀 Interactive Playground
+            <Link href={links.internal.playground.url} className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300">
+              🚀 {links.internal.playground.label}
             </Link>
-            <Link href="/samples" className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300">
-              Sample Projects
+            <Link href={links.internal.samples.url} className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300">
+              {links.internal.samples.label}
             </Link>
-            <Link href="/sitemap" className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300">
-              Sitemap
+            <Link href={links.internal.sitemap.url} className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300">
+              {links.internal.sitemap.label}
             </Link>
           </div>
         </div>
