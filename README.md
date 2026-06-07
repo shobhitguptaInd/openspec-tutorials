@@ -5,7 +5,12 @@ A comprehensive tutorial platform for learning OpenSpec and IBM Bob, focused on 
 ## 🚀 Features
 
 - **Language-Specific Tutorials**: Dedicated learning paths for COBOL/JCL, Java, and .NET
-- **Interactive Playground**: Try OpenSpec specifications without installation
+- **Enhanced Interactive Playground**:
+  - Multi-file editor with tabs (proposal.md, .openspec.yaml, source code)
+  - Real-time terminal simulator with OpenSpec CLI commands
+  - Progress tracking with guided learning steps
+  - GitHub Codespaces integration for one-click development environments
+  - Language-specific examples (COBOL, Java, .NET)
 - **Sample Projects**: Clone-and-run examples for each language
 - **Getting Started Guide**: Quick onboarding for new users
 - **Responsive Design**: Works on desktop, tablet, and mobile
@@ -40,17 +45,73 @@ npm run dev
 ```
 tutorial-website/
 ├── src/
-│   └── app/
-│       ├── layout.tsx          # Root layout with navigation
-│       ├── page.tsx            # Homepage
-│       ├── globals.css         # Global styles
-│       ├── getting-started/    # Getting started guide
-│       ├── tutorials/          # Language-specific tutorials
-│       │   ├── cobol/
-│       │   ├── java/
-│       │   └── dotnet/
-│       ├── playground/         # Interactive playground
-│       └── samples/            # Sample projects
+│   ├── app/
+│   │   ├── layout.tsx          # Root layout with navigation
+│   │   ├── page.tsx            # Homepage
+│   │   ├── globals.css         # Global styles
+│   │   ├── getting-started/    # Getting started guide
+│   │   ├── tutorials/          # Language-specific tutorials
+│   │   │   ├── cobol/
+│   │   │   ├── java/
+│   │   │   └── dotnet/
+│   │   ├── playground/         # Enhanced interactive playground
+│   │   └── samples/            # Sample projects
+│   └── components/
+
+## 🎮 Enhanced Interactive Playground
+
+The playground has been completely redesigned to provide a realistic OpenSpec development experience:
+
+### Key Features
+
+1. **Multi-File Editor**
+   - Edit `proposal.md`, `.openspec.yaml`, and source code files in tabs
+   - Syntax highlighting for Markdown, YAML, COBOL, Java, and C#
+   - Real-time content updates
+
+2. **Terminal Simulator**
+   - Run actual OpenSpec CLI commands:
+     - `openspec validate` - Validate specifications
+     - `openspec status` - Check project status
+     - `openspec init` - Initialize configuration
+   - See realistic command output
+   - Learn CLI workflow without installation
+
+3. **Progress Tracking**
+   - Visual progress indicators for learning steps
+   - Automatic detection of completed tasks
+   - Guided learning path through OpenSpec workflow
+
+4. **GitHub Codespaces Integration**
+   - One-click access to full development environment
+   - Pre-configured with OpenSpec CLI and language tools
+   - No local setup required
+
+5. **Language Examples**
+   - COBOL: Batch processing with file I/O
+   - Java: Spring Boot REST API
+   - .NET: ASP.NET Core Web API
+   - Switch between examples instantly
+
+### How It Works
+
+The playground simulates the complete OpenSpec workflow:
+
+1. **Create Specification**: Write `proposal.md` with Problem, Solution, and Requirements
+2. **Configure Project**: Set up `.openspec.yaml` with project metadata
+3. **Validate**: Run `openspec validate` in the terminal
+4. **Review Code**: See example implementation in source files
+5. **Deploy**: Use Codespaces button for real environment
+
+This approach ensures users learn the **actual OpenSpec process** rather than a simplified simulation.
+
+│       ├── Navigation.tsx      # Main navigation
+│       ├── Breadcrumbs.tsx     # Breadcrumb navigation
+│       └── playground/         # Playground components
+│           ├── FileTab.tsx     # Multi-file tab component
+│           ├── TerminalSimulator.tsx  # CLI simulator
+│           ├── CodespacesButton.tsx   # GitHub Codespaces integration
+│           └── ProgressTracker.tsx    # Learning progress tracker
 ├── public/                     # Static assets
 ├── package.json
 ├── next.config.js
