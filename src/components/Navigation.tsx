@@ -62,6 +62,9 @@ export default function Navigation() {
                     <Link href={links.internal.quickReference.url} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
                       {links.internal.quickReference.label}
                     </Link>
+                    <Link href={links.internal.bobCommands.url} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                      🤖 {links.internal.bobCommands.label}
+                    </Link>
                     <Link href={links.internal.sdlcPhases.url} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
                       {links.internal.sdlcPhases.label}
                     </Link>
@@ -180,6 +183,9 @@ export default function Navigation() {
             </Link>
             <Link href={links.internal.quickReference.url} className="block pl-6 pr-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
               {links.internal.quickReference.label}
+            </Link>
+            <Link href={links.internal.bobCommands.url} className="block pl-6 pr-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
+              🤖 {links.internal.bobCommands.label}
             </Link>
             <Link href={links.internal.sdlcPhases.url} className="block pl-6 pr-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
               {links.internal.sdlcPhases.label}

@@ -90,6 +90,15 @@ export const links = {
       status: 'active' as const
     },
     
+    bobCommands: {
+      url: '/getting-started/bob-commands',
+      label: 'OpenSpec Commands',
+      description: 'OpenSpec commands for IBM Bob',
+      usedBy: ['getting-started', 'navigation'],
+      parent: '/getting-started',
+      status: 'active' as const
+    },
+    
     // Tutorial Links
     tutorialsCobol: {
       url: '/tutorials/cobol',

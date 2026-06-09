@@ -542,7 +542,7 @@ customer data and comply with security requirements.
         {/* Next Steps */}
         <section className="mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-6">Explore More</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
             <a href={links.internal.tutorialsCobol.url} className="block p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-primary-500 transition">
               <h3 className="text-xl font-semibold text-gray-900 mb-2">{links.internal.tutorialsCobol.label}</h3>
               <p className="text-gray-600">{links.internal.tutorialsCobol.description}</p>
@@ -559,6 +559,20 @@ customer data and comply with security requirements.
               <h3 className="text-xl font-semibold text-gray-900 mb-2">{links.internal.samples.label}</h3>
               <p className="text-gray-600">{links.internal.samples.description}</p>
             </a>
+          </div>
+          
+          <div className="bg-gradient-to-r from-purple-50 to-blue-50 border-2 border-purple-300 rounded-lg p-8">
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">🤖 IBM Bob Commands Reference</h3>
+                <p className="text-gray-700 mb-4">
+                  Learn about the OpenSpec commands available in IBM Bob, including detailed workflows, prompts, and artifact generation examples.
+                </p>
+                <a href={links.internal.bobCommands.url} className="inline-block bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition">
+                  View Bob Commands Guide →
+                </a>
+              </div>
+            </div>
           </div>
         </section>
 
